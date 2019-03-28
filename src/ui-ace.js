@@ -196,13 +196,12 @@ angular.module('ui.ace', [])
           var args = Array.prototype.slice.call(arguments, 1);
 
           if (angular.isDefined(callback)) {
-            scope.$evalAsync(function () {
-              if (angular.isFunction(callback)) {
-                callback(args);
-              } else {
-                throw new Error('ui-ace use a function as callback.');
-              }
-            });
+            if (angular.isFunction(callback)) {
+              callback(args);
+            } else {
+              throw new Error('ui-ace use a function as callback.');
+            }
+            scope.$evalAsync(function () {});
           }
         };
 
@@ -229,9 +228,8 @@ angular.module('ui.ace', [])
                   // digest loop 'cause ACE is actually using this callback
                   // for any text transformation !
                   !scope.$$phase && !scope.$root.$$phase) {
-                scope.$evalAsync(function () {
-                  ngModel.$setViewValue(newValue);
-                });
+                ngModel.$setViewValue(newValue);
+                scope.$evalAsync(function () {});
               }
 
               executeUserCallback(callback, e, acee);
