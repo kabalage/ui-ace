@@ -5,7 +5,7 @@
   "author": "https://github.com/angular-ui/ui-ace/graphs/contributors",
   "license": "MIT",
   "homepage": "http://angular-ui.github.com",
-  "main": "./ui-ace.js",
+  "main": "./src/ui-ace.js",
   "dependencies": {},
   "devDependencies": {
     "angular-ui-publisher": "~1.x",
